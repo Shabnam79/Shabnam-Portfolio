@@ -7,1034 +7,161 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani:wght@500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <style>
-    :root {
-      --primary: #00c3ff;
-      --secondary: #9900ff;
-      --accent: #ff00aa;
-      --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
-      --glow: 0 0 15px rgba(0, 195, 255, 0.5), 0 0 30px rgba(153, 0, 255, 0.3);
-      --bg-dark: #0a0a12;
-      --card-bg: rgba(20, 20, 30, 0.8);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg-dark);
-      color: white;
-      overflow-x: hidden;
-    }
-
-    #particles-js {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    /* Floating Blobs Background */
-    .blob {
-      position: fixed;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.15;
-      z-index: -1;
-      animation: float 15s infinite ease-in-out;
-    }
-    .blob-1 {
-      background: var(--primary);
-      top: 20%;
-      left: 10%;
-      animation-delay: 0s;
-    }
-    .blob-2 {
-      background: var(--secondary);
-      bottom: 10%;
-      right: 10%;
-      animation-delay: 3s;
-    }
-    .blob-3 {
-      background: var(--accent);
-      top: 50%;
-      right: 20%;
-      animation-delay: 6s;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      25% { transform: translate(50px, 50px) rotate(5deg); }
-      50% { transform: translate(0, 100px) rotate(0deg); }
-      75% { transform: translate(-50px, 50px) rotate(-5deg); }
-    }
-
-    /* Navigation */
-    nav {
-      width: 100%;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(10, 10, 18, 0.9);
-      position: fixed;
-      top: 0;
-      z-index: 999;
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    nav .logo {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.6rem;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: rgba(255, 255, 255, 0.8);
-      font-weight: 600;
-      transition: all 0.3s ease;
-      position: relative;
-      padding: 5px 0;
-    }
-
-    nav ul li a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gradient);
-      transition: width 0.3s ease;
-    }
-
-    nav ul li a:hover {
-      color: white;
-    }
-
-    nav ul li a:hover::after {
-      width: 100%;
-    }
-
-    /* Hero Section with Typing Animation */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 100px 40px 60px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .profile-photo {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--primary);
-      margin-bottom: 30px;
-      box-shadow: var(--glow);
-      transition: all 0.4s ease;
-    }
-
-    .profile-photo:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(0, 195, 255, 0.6);
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(0, 195, 255, 0.2) 0%, transparent 70%);
-      z-index: -1;
-      animation: pulse 6s infinite ease-in-out;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.2; }
-      50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.4; }
-    }
-
-    .hero h1 {
-      font-size: 4rem;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-family: 'Orbitron', sans-serif;
-      margin-bottom: 20px;
-      letter-spacing: 2px;
-      text-shadow: var(--glow);
-      font-weight: bold;
-    }
-
-    .hero p {
-      font-size: 1.4rem;
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 30px;
-      max-width: 700px;
-      line-height: 1.6;
-      font-weight: bold;
-    }
-
-    .hero .buttons {
-      display: flex;
-      gap: 20px;
-    }
-
-    .hero .buttons a {
-      text-decoration: none;
-      border: 2px solid var(--primary);
-      color: white;
-      padding: 12px 30px;
-      border-radius: 50px;
-      transition: all 0.4s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .hero .buttons a::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--gradient);
-      z-index: -1;
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.4s ease;
-    }
-
-    .hero .buttons a:hover {
-      box-shadow: var(--glow);
-    }
-
-    .hero .buttons a:hover::before {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-
-    .hero .buttons a:nth-child(2) {
-      border-color: var(--secondary);
-    }
-
-    /* Section Styling with Reduced Gap */
-    section {
-      padding: 60px 40px;
-      position: relative;
-    }
-
-    section h2 {
-      font-size: 3rem;
-      margin-bottom: 30px;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-family: 'Orbitron', sans-serif;
-      text-align: center;
-      letter-spacing: 1px;
-      position: relative;
-      display: inline-block;
-      width: 100%;
-    }
-
-    section h2::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 3px;
-      background: var(--gradient);
-      border-radius: 3px;
-    }
-
-    /* Skills Section - Enhanced Cards */
-    .skills-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .skill-card {
-      background: rgba(30, 30, 50, 0.8);
-      border-radius: 15px;
-      padding: 25px;
-      border: 2px solid rgba(0, 195, 255, 0.3);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      transform: translateY(0) scale(1);
-      cursor: pointer;
-    }
-
-    .skill-card::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      border: 2px solid transparent;
-      border-radius: 15px;
-      background: linear-gradient(135deg, 
-        rgba(0, 195, 255, 0.5), 
-        rgba(153, 0, 255, 0.5));
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    }
-
-    .skill-card:hover::before {
-      opacity: 1;
-      animation: border-glow 2s infinite alternate;
-    }
-
-    .skill-card:active {
-      transform: translateY(-5px) scale(0.98);
-    }
-
-    .skill-card.active {
-      animation: skill-pop 0.5s ease forwards;
-    }
-
-    @keyframes skill-pop {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes border-glow {
-      0% { opacity: 0.5; }
-      100% { opacity: 1; }
-    }
-
-    .skill-card h3 {
-      color: white;
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-      text-align: center;
-      position: relative;
-    }
-
-    .skill-card h3::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 40px;
-      height: 2px;
-      background: var(--gradient);
-    }
-
-    .skill-description {
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 20px;
-      font-size: 1rem;
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    .skill-items {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-    }
-
-    .skill-item {
-      background: rgba(0, 195, 255, 0.1);
-      color: white;
-      padding: 6px 15px;
-      border-radius: 50px;
-      font-size: 0.9rem;
-      border: 1px solid rgba(0, 195, 255, 0.3);
-      transition: all 0.3s ease;
-    }
-
-    .skill-card:hover .skill-item {
-      background: rgba(0, 195, 255, 0.2);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 195, 255, 0.2);
-    }
-
-    /* Projects Section */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .project-card {
-      background: var(--card-bg);
-      border-radius: 20px;
-      padding: 25px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: var(--gradient);
-    }
-
-    .project-card h3 {
-      color: white;
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-    }
-
-    .project-card em {
-      display: block;
-      margin-bottom: 15px;
-      color: rgba(255, 255, 255, 0.7);
-      font-style: normal;
-      font-size: 0.95rem;
-    }
-
-    .project-card ul {
-      margin-top: 15px;
-    }
-
-    .project-card ul li {
-      margin-bottom: 10px;
-      padding-left: 25px;
-      position: relative;
-      list-style: none;
-      color: rgba(255, 255, 255, 0.9);
-      line-height: 1.6;
-    }
-
-    .project-card ul li::before {
-      content: '▹';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-      font-size: 1.2rem;
-    }
-
-    /* Enhanced Education Section */
-    .education-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .education-container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 4px;
-      height: 100%;
-      background: linear-gradient(to bottom, var(--primary), var(--secondary));
-      border-radius: 4px;
-    }
-
-    .edu-card {
-      width: calc(50% - 40px);
-      padding: 30px;
-      background: var(--card-bg);
-      border-radius: 15px;
-      margin-bottom: 40px;
-      position: relative;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      transition: all 0.4s ease;
-      opacity: 0;
-      cursor: pointer;
-    }
-
-    .edu-card:hover {
-      transform: translateY(-10px) !important;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-      background: rgba(30, 30, 50, 0.9);
-    }
-
-    .edu-card:active {
-      transform: translateY(-5px) scale(0.98) !important;
-    }
-
-    .edu-card.active {
-      animation: edu-bounce 0.5s ease;
-    }
-
-    @keyframes edu-bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-
-    .edu-card:nth-child(odd) {
-      margin-right: auto;
-      transform: translateX(20px);
-      animation: slideInRight 0.8s ease forwards;
-    }
-
-    .edu-card:nth-child(even) {
-      margin-left: auto;
-      transform: translateX(-20px);
-      animation: slideInLeft 0.8s ease forwards;
-    }
-
-    .edu-card::before {
-      content: '';
-      position: absolute;
-      top: 30px;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: var(--gradient);
-      z-index: 1;
-      transition: all 0.3s ease;
-    }
-
-    .edu-card:hover::before {
-      transform: scale(1.2);
-      box-shadow: 0 0 20px rgba(0, 195, 255, 0.5);
-    }
-
-    .edu-card:nth-child(odd)::before {
-      right: -55px;
-    }
-
-    .edu-card:nth-child(even)::before {
-      left: -55px;
-    }
-
-    .edu-card h3 {
-      color: white;
-      font-size: 1.4rem;
-      margin-bottom: 5px;
-    }
-
-    .edu-card .location {
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 15px;
-      font-size: 0.95rem;
-    }
-
-    .edu-card .degree {
-      color: white;
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
-
-    .edu-card .details {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.95rem;
-    }
-
-    /* Contact Section */
-    #contact {
-      text-align: center;
-    }
-
-    .contact-info {
-      max-width: 600px;
-      margin: 0 auto;
-      background: var(--card-bg);
-      padding: 40px;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .contact-info p {
-      margin-bottom: 20px;
-      font-size: 1.1rem;
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    .contact-link {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0, 195, 255, 0.1);
-      color: white;
-      font-size: 1.3rem;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(0, 195, 255, 0.2);
-    }
-
-    .contact-link:hover {
-      background: var(--gradient);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 195, 255, 0.2);
-    }
-
-    /* Typing Animation */
-    .typing-text {
-      display: inline-block;
-      overflow: hidden;
-      border-right: 2px solid var(--primary);
-      white-space: nowrap;
-      animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: var(--primary) }
-    }
-
-    /* Section Entry Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes slideInLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(-20px);
-      }
-    }
-
-    @keyframes slideInRight {
-      from {
-        opacity: 0;
-        transform: translateX(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(20px);
-      }
-    }
-
-    /* Responsive Design */
-    @media (max-width: 992px) {
-      .hero h1 {
-        font-size: 3rem;
-      }
-      
-      section {
-        padding: 50px 30px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        padding: 15px 20px;
-      }
-      
-      nav ul {
-        gap: 15px;
-      }
-      
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      
-      .hero p {
-        font-size: 1.2rem;
-      }
-      
-      .hero .buttons {
-        flex-direction: column;
-        gap: 15px;
-      }
-      
-      section h2 {
-        font-size: 2.5rem;
-      }
-      
-      .education-container::before {
-        left: 30px;
-      }
-      
-      .edu-card {
-        width: calc(100% - 70px);
-      }
-      
-      .edu-card:nth-child(odd),
-      .edu-card:nth-child(even) {
-        margin-left: 70px;
-        transform: none;
-        animation: fadeInUp 0.8s ease forwards;
-      }
-      
-      .edu-card:nth-child(odd)::before,
-      .edu-card:nth-child(even)::before {
-        left: -55px;
-        right: auto;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .skills-container,
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .hero h1 {
-        font-size: 2rem;
-      }
-      
-      section {
-        padding: 40px 20px;
-      }
-      
-      section h2 {
-        font-size: 2rem;
-      }
-      
-      .skill-card,
-      .project-card {
-        padding: 20px;
-      }
-      
-      .profile-photo {
-        width: 120px;
-        height: 120px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div id="particles-js"></div>
-
-<!-- Floating Blobs Background -->
 <div class="blob blob-1"></div>
 <div class="blob blob-2"></div>
 <div class="blob blob-3"></div>
 
 <nav>
-  <div class="logo">Mohan Krishna</div>
+  <div class="logo">Shabnam</div>
   <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <section class="hero">
-  <img src="photo.jpg" alt="Mohan Krishna Namburu" class="profile-photo">
-  <h1 class="typing-text">Mohan Krishna Namburu</h1>
-  <p class="typing-text">AI & Data Science Enthusiast | Full-Stack Developer</p>
+  <img src="ProfilePic.jpg" alt="Shabnam" class="profile-photo">
+  <h1 class="typing-text">Shabnam</h1>
+  <p class="typing-text">DevOps Engineer | Kubernetes | Terraform | AWS | Azure | CI/CD | DevSecOps</p>
   <div class="buttons">
-    <a href="resume.pdf" download><i class="fas fa-download"></i> Download Resume</a>
-    <a href="https://github.com/mohannamburu18" target="_blank"><i class="fab fa-github"></i> View GitHub</a>
+    <a href="DevopsEngineer-Shabnam(2).pdf" download><i class="fas fa-download"></i> Download Resume</a>
+    <a href="https://github.com/Shabnam79" target="_blank"><i class="fab fa-github"></i> View GitHub</a>
   </div>
 </section>
 
 <section id="about">
   <h2>About Me</h2>
   <div style="max-width: 800px; margin: 0 auto;">
-    <p>Motivated and detail-oriented B.Tech student specializing in Artificial Intelligence and Data Science, with a strong foundation in Data Structures, Algorithms, and Full-Stack Development. Actively seeking a Software Developer role where I can leverage my problem-solving skills, programming proficiency, and passion for scalable system design to contribute to innovative projects.</p>
+    <p>DevOps Engineer with over 3.6 years of hands-on experience delivering cloud-native, secure, and scalable solutions across AWS and Azure. Proven expertise in building robust CI/CD pipelines, implementing Infrastructure as Code using Terraform and Ansible, and enabling DevSecOps practices using tools like SonarQube, Trivy, and Checkov. Skilled in Kubernetes, Docker, Jenkins, GitOps, and cross-functional collaboration in Agile environments.</p>
   </div>
 </section>
 
 <section id="skills">
   <h2>My Skills</h2>
   <div class="skills-container">
-    <!-- Frontend Development -->
     <div class="skill-card">
-      <h3>Frontend Development</h3>
-      <p class="skill-description">Creating responsive and interactive user interfaces</p>
+      <h3>Cloud & DevOps</h3>
+      <p class="skill-description">Cloud-native architecture, automation & observability</p>
       <div class="skill-items">
-        <span class="skill-item">HTML</span>
-        <span class="skill-item">CSS</span>
-        <span class="skill-item">JavaScript</span>
-        <span class="skill-item">React.js</span>
-        <span class="skill-item">Tailwind CSS</span>
-        <span class="skill-item">Bootstrap</span>
+        <span class="skill-item">AWS (EC2, S3, IAM, CodeDeploy)</span>
+        <span class="skill-item">Azure (Azure DevOps, Azure Monitor)</span>
+        <span class="skill-item">GCP (basic)</span>
+        <span class="skill-item">Terraform</span>
+        <span class="skill-item">CloudFormation</span>
+        <span class="skill-item">Ansible</span>
       </div>
     </div>
-
-    <!-- Backend Development -->
     <div class="skill-card">
-      <h3>Backend Development</h3>
-      <p class="skill-description">Building robust server-side applications</p>
+      <h3>Security & Monitoring</h3>
+      <p class="skill-description">Secure DevOps practices and observability</p>
       <div class="skill-items">
-        <span class="skill-item">Node.js</span>
-        <span class="skill-item">Express.js</span>
-        <span class="skill-item">Django</span>
-        <span class="skill-item">Flask</span>
+        <span class="skill-item">SonarQube</span>
+        <span class="skill-item">Trivy</span>
+        <span class="skill-item">Checkov</span>
+        <span class="skill-item">OWASP ZAP</span>
+        <span class="skill-item">Dependency-Check</span>
+        <span class="skill-item">Prometheus</span>
+        <span class="skill-item">Grafana</span>
+        <span class="skill-item">Azure Monitor</span>
       </div>
     </div>
-
-    <!-- Database Management -->
     <div class="skill-card">
-      <h3>Database Management</h3>
-      <p class="skill-description">Designing and optimizing data storage</p>
+      <h3>CI/CD & Scripting</h3>
+      <p class="skill-description">Automation tools and languages</p>
       <div class="skill-items">
-        <span class="skill-item">MySQL</span>
-        <span class="skill-item">MongoDB</span>
-        <span class="skill-item">SQLite</span>
+        <span class="skill-item">Jenkins</span>
+        <span class="skill-item">GitHub Actions</span>
+        <span class="skill-item">Azure Pipelines</span>
+        <span class="skill-item">CodeBuild</span>
+        <span class="skill-item">Git</span>
+        <span class="skill-item">Python</span>
+        <span class="skill-item">Bash</span>
+        <span class="skill-item">PowerShell</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h3>Containerization</h3>
+      <p class="skill-description">Deployment and orchestration</p>
+      <div class="skill-items">
+        <span class="skill-item">Docker</span>
+        <span class="skill-item">Kubernetes (EKS, AKS, Helm, namespaces)</span>
       </div>
     </div>
   </div>
 </section>
 
 <section id="projects">
-  <h2>My Projects</h2>
+  <h2>Projects</h2>
   <div class="projects-grid">
-    <!-- Project 1 -->
     <div class="project-card">
-      <h3>Smart Employee Monitoring System</h3>
-      <em>Real-time employee activity tracking</em>
+      <h3>SRA</h3>
+      <em>Terraform, Azure DevOps</em>
       <ul>
-        <li>Facial recognition with OpenCV and deep learning</li>
-        <li>Machine learning models to classify work states</li>
-        <li>SQL database for logging and analytics dashboards</li>
-        <li>Real-time notifications for productivity insights</li>
+        <li>Enhanced IaC templates using Terraform and Azure DevOps, reducing provisioning timelines and improving compliance.</li>
+        <li>Executed Checkov for pre-deployment scanning, catching 90% of IaC misconfigurations.</li>
+        <li>Built real-time dashboards with Azure Monitor to improve incident response.</li>
       </ul>
     </div>
-
-    <!-- Project 2 -->
     <div class="project-card">
-      <h3>E-Hospital Management System</h3>
-      <em>Digital web app for hospital operations</em>
+      <h3>TX-DevSecOps</h3>
+      <em>Jenkins, DevSecOps</em>
       <ul>
-        <li>Secure patient booking and doctor communication</li>
-        <li>Comprehensive database for medical records</li>
-        <li>Responsive design with form validation</li>
-        <li>Role-based access control for staff</li>
+        <li>Developed CI/CD pipeline with SAST (SonarQube), SCA (OWASP), and DAST (OWASP ZAP) tools.</li>
+        <li>Integrated Trivy and Checkov to scan containers and Kubernetes manifests pre-deployment.</li>
+        <li>Improved lead time from 60 to 15 minutes and reduced vulnerabilities by 70%.</li>
       </ul>
     </div>
-
-    <!-- Project 3 -->
     <div class="project-card">
-      <h3>Cricket Info Website</h3>
-      <em>Live cricket score portal with analytics</em>
+      <h3>ASTM</h3>
+      <em>Flask, EKS, ArgoCD</em>
       <ul>
-        <li>Built with Django framework and REST API</li>
-        <li>Real-time score updates via API integration</li>
-        <li>Player statistics and match history</li>
-        <li>User-friendly navigation and search</li>
+        <li>Deployed Flask microservices on AWS EKS using Jenkins and ArgoCD.</li>
+        <li>Implemented blue-green deployment strategies with rollback and autoscaling.</li>
+        <li>Achieved 50% reduction in release time and enhanced reliability.</li>
       </ul>
     </div>
   </div>
 </section>
 
-<section id="education">
-  <h2>Education</h2>
+<section id="experience">
+  <h2>Experience</h2>
   <div class="education-container">
-    <!-- Education 1 -->
     <div class="edu-card">
-      <h3>Sastra Deemed University</h3>
-      <div class="location">Thanjavur, India</div>
-      <div class="degree">B.Tech in Computer Science and Engineering (AI & DS)</div>
-      <div class="details">2022 – 2026 | CGPA: 7.56</div>
-    </div>
-
-    <!-- Education 2 -->
-    <div class="edu-card">
-      <h3>Vidwan Junior College</h3>
-      <div class="location">Guntur, India</div>
-      <div class="degree">Intermediate (MPC)</div>
-      <div class="details">2020 – 2022 | Percentage: 96.8%</div>
-    </div>
-
-    <!-- Education 3 -->
-    <div class="edu-card">
-      <h3>Bhashyam High School</h3>
-      <div class="location">Guntur, India</div>
-      <div class="degree">SSC</div>
-      <div class="details">2019 – 2020 | Percentage: 97.6%</div>
+      <h3>Software Engineer, DevOps</h3>
+      <div class="location">TestingXperts Pvt Ltd, Chandigarh</div>
+      <div class="degree">Jan 2022 – Present</div>
+      <div class="details">
+        <ul>
+          <li>Delivered CI/CD pipelines using Jenkins and ArgoCD for Java/Python apps.</li>
+          <li>Automated infrastructure provisioning using Terraform and Azure DevOps.</li>
+          <li>Reduced provisioning time and improved deployment security by integrating SAST, SCA, and container scanning tools.</li>
+          <li>Managed Kubernetes deployments with Helm, autoscaling, and monitoring via Prometheus and Azure Monitor.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="contact">
-  <h2>Get In Touch</h2>
+  <h2>Contact Me</h2>
   <div class="contact-info">
-    <p>I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll do my best to get back to you!</p>
-    <p>Email: <a href="mailto:mohannamburu1343@gmail.com" style="color: var(--primary);">mohannamburu1343@gmail.com</a></p>
+    <p>Open to new DevOps opportunities in India, UAE, or Australia. Let's connect!</p>
+    <p>Email: <a href="mailto:shabnambeas5@gmail.com" style="color: var(--primary);">shabnambeas5@gmail.com</a></p>
     <div class="contact-links">
-      <a href="https://www.linkedin.com/in/mohan-krishna-198b00275" class="contact-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://github.com/mohannamburu18" class="contact-link" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/shabnam-devops" class="contact-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/Shabnam79" class="contact-link" target="_blank"><i class="fab fa-github"></i></a>
     </div>
   </div>
 </section>
 
-<script>
-  // Initialize particles.js
-  particlesJS("particles-js", {
-    "particles": {
-      "number": { "value": 80 },
-      "color": { "value": "#00ffff" },
-      "shape": { "type": "circle" },
-      "opacity": { "value": 0.5 },
-      "size": { "value": 3 },
-      "line_linked": {
-        "enable": true,
-        "distance": 150,
-        "color": "#00ffff",
-        "opacity": 0.3,
-        "width": 1
-      },
-      "move": {
-        "enable": true,
-        "speed": 2,
-        "direction": "none",
-        "random": true,
-        "straight": false,
-        "out_mode": "out",
-        "bounce": false,
-        "attract": {
-          "enable": true,
-          "rotateX": 600,
-          "rotateY": 1200
-        }
-      }
-    },
-    "interactivity": {
-      "detect_on": "canvas",
-      "events": {
-        "onhover": { "enable": true, "mode": "repulse" },
-        "onclick": { "enable": true, "mode": "push" },
-        "resize": true
-      },
-      "modes": {
-        "repulse": { "distance": 100, "duration": 0.4 },
-        "push": { "particles_nb": 4 }
-      }
-    },
-    "retina_detect": true
-  });
-
-  // Typing animation
-  document.addEventListener('DOMContentLoaded', function() {
-    const nameElement = document.querySelector('.hero h1');
-    const titleElement = document.querySelector('.hero p');
-    
-    // Reset to show cursor
-    nameElement.style.borderRight = '2px solid var(--primary)';
-    titleElement.style.borderRight = '2px solid var(--primary)';
-    
-    // Trigger reflow to restart animation
-    void nameElement.offsetWidth;
-    void titleElement.offsetWidth;
-    
-    // Apply animation
-    nameElement.style.animation = 'typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite';
-    titleElement.style.animation = 'typing 3.5s steps(40, end) 3.5s, blink-caret 0.75s step-end infinite';
-  });
-
-  // Add click animations to skill cards
-  document.querySelectorAll('.skill-card').forEach(card => {
-    card.addEventListener('click', function() {
-      this.classList.add('active');
-      setTimeout(() => {
-        this.classList.remove('active');
-      }, 500);
-    });
-  });
-
-  // Add click animations to education cards
-  document.querySelectorAll('.edu-card').forEach(card => {
-    card.addEventListener('click', function() {
-      this.classList.add('active');
-      setTimeout(() => {
-        this.classList.remove('active');
-      }, 500);
-    });
-  });
-
-  // Animate sections when they come into view
-  const animateOnScroll = () => {
-    const elements = document.querySelectorAll('.skill-card, .project-card, .edu-card, .contact-info');
-    
-    elements.forEach(element => {
-      const elementPosition = element.getBoundingClientRect().top;
-      const screenPosition = window.innerHeight / 1.3;
-      
-      if (elementPosition < screenPosition) {
-        element.style.opacity = '1';
-        element.style.transform = 'translateY(0)';
-      }
-    });
-  };
-
-  window.addEventListener('scroll', animateOnScroll);
-  animateOnScroll(); // Run once on load
-</script>
-
+<script src="main.js"></script>
 </body>
 </html>
