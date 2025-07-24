@@ -1,48 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shabnam Kumari | DevOps Engineer Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shabnam Kumari | DevOps Engineer</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
+    * {
       margin: 0;
-      background-color: #f8f9fa;
-      color: #212529;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background-color: #0f172a;
+      color: #f8fafc;
       line-height: 1.6;
     }
     header {
-      background-color: #343a40;
-      color: #fff;
+      background-color: #1e293b;
       padding: 2rem;
       text-align: center;
     }
     header h1 {
-      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      margin-top: 0.5rem;
+      color: #94a3b8;
     }
     section {
-      padding: 2rem;
-      max-width: 900px;
+      max-width: 960px;
       margin: auto;
+      padding: 2rem;
     }
     .card {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      padding: 1.5rem;
+      background-color: #1e293b;
       margin-bottom: 2rem;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
     h2 {
-      color: #495057;
+      color: #38bdf8;
+      margin-bottom: 1rem;
     }
     ul {
-      padding-left: 1.5rem;
+      margin-left: 1rem;
     }
     a {
-      color: #007bff;
+      color: #38bdf8;
       text-decoration: none;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      color: #94a3b8;
     }
   </style>
 </head>
@@ -56,28 +70,28 @@
   <section>
     <div class="card">
       <h2>About Me</h2>
-      <p>DevOps Engineer with over 3.6 years of experience delivering cloud-native, secure, and scalable solutions across AWS and Azure. Skilled in Kubernetes, Terraform, Jenkins, and security-first DevOps practices.</p>
+      <p>I am a DevOps Engineer with 3.6+ years of experience in cloud-native technologies, automation, and security. My expertise includes AWS, Azure, Kubernetes, Terraform, Jenkins, and GitOps. I’m passionate about delivering scalable, secure, and resilient infrastructure solutions.</p>
+    </div>
+
+    <div class="card">
+      <h2>Projects</h2>
+      <ul>
+        <li><strong>TX-DevSecOps:</strong> Implemented secure CI/CD pipelines using Jenkins, GitHub Actions, SonarQube, and Trivy; reduced vulnerabilities by 70%.</li>
+        <li><strong>SRA:</strong> Built automated Terraform pipelines with Azure DevOps, reducing provisioning time by 40% and enhancing configuration compliance.</li>
+        <li><strong>ASTM:</strong> Deployed containerized Python microservices to AWS EKS with blue-green strategies for zero-downtime releases.</li>
+      </ul>
     </div>
 
     <div class="card">
       <h2>Skills</h2>
       <ul>
         <li><strong>Cloud:</strong> AWS, Azure, GCP (basic)</li>
-        <li><strong>CI/CD:</strong> Jenkins, GitHub Actions, Azure DevOps, GitLab CI</li>
+        <li><strong>CI/CD:</strong> Jenkins, GitHub Actions, Azure DevOps</li>
         <li><strong>IaC:</strong> Terraform, Ansible, CloudFormation</li>
-        <li><strong>Containers & Orchestration:</strong> Docker, Kubernetes (EKS/AKS)</li>
-        <li><strong>Security:</strong> SonarQube, Trivy, Checkov, OWASP ZAP</li>
+        <li><strong>Containers:</strong> Docker, Kubernetes (EKS/AKS)</li>
+        <li><strong>Security:</strong> Trivy, Checkov, OWASP ZAP, SonarQube</li>
         <li><strong>Monitoring:</strong> Prometheus, Grafana, Azure Monitor</li>
         <li><strong>Scripting:</strong> Python, Bash, PowerShell</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>Projects</h2>
-      <ul>
-        <li><strong>TX-DevSecOps:</strong> Implemented secure CI/CD pipelines with Jenkins & Trivy, reduced critical vulnerabilities by 70%.</li>
-        <li><strong>SRA:</strong> Automated IaC with Terraform, improved provisioning time by 40% using Azure DevOps.</li>
-        <li><strong>ASTM:</strong> Deployed Python Flask microservices to AWS EKS using ArgoCD with zero-downtime release strategies.</li>
       </ul>
     </div>
 
@@ -96,5 +110,9 @@
       <p>Location: Chandigarh, India (Open to Relocate)</p>
     </div>
   </section>
+
+  <footer>
+    &copy; 2025 Shabnam Kumari. All rights reserved.
+  </footer>
 </body>
 </html>
